@@ -1,6 +1,5 @@
 from weather import Weather 
 
-
 def main():
     weather = Weather()
     weather.work()
