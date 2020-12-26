@@ -35,7 +35,7 @@ jobs:
         LOC: ${{secrets.LOC}}
         CHAN: ${{secrets.CHAN}}
         OSSACCESSKEY: ${{secrets.OSSACCESSKEY}}
-        OSSACCESSKEYSECRET": ${{secrets.OSSACCESSKEYSECRET}}
+        OSSACCESSKEYSECRET: ${{secrets.OSSACCESSKEYSECRET}}
         OSSENDPOINT: ${{secrets.OSSENDPOINT}}
         OSSBUCKET: ${{secrets.OSSBUCKET}}
       run: |
