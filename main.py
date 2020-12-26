@@ -1,11 +1,9 @@
-#from weather import Weather 
+from weather import Weather 
 import os
 
 def main():
-    # weather = Weather()
-    # weather.work()
-    dir = os.environ
-    print(dir.get('APP_KEY'))
+    weather = Weather()
+    weather.work()
 
 
 if __name__ == '__main__':
