@@ -32,6 +32,14 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Run Application
+      with:
+        APP_KEY: ${{secrets.APP_KEY}}
+        LOC: ${{secrets.LOC}}
+        CHAN: ${{secrets.CHAN}}
+        OSSACCESSKEY: ${{secrets.OSSACCESSKEY}}
+        OSSACCESSKEYSECRET": ${{secrets.OSSACCESSKEYSECRET}}
+        OSSENDPOINT: ${{secrets.OSSENDPOINT}}
+        OSSBUCKET: ${{secrets.OSSBUCKET}}
       env:
         APP_KEY: ${{secrets.APP_KEY}}
         LOC: ${{secrets.LOC}}
