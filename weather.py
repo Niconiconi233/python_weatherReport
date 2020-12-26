@@ -82,12 +82,7 @@ class Weather:
             logging.info("24小时天气数据请求成功！更新时间为：" + weather.get("updateTime"))
             return weather
 
-
-    def test(self):
-        with open('seven.json', 'w') as f:
-            json.dump(self.__get_seven_days_weather(), f)
-
-    def print_seven_days_info(self, data):
+    def _print_seven_days_info(self, data):
         str = "| 日期 | 白天天气 | 气温  | 晚间天气 | 风力 | 湿度 | 紫外线强度 |\n| ---------- | ------------------------------------------------------------ | ----- | ------------------------------------------------------------ | ---- | ---- | ---------- |\n"
         seven_days = data.get("daily")
         cache = {}
@@ -107,7 +102,7 @@ class Weather:
             wind = i['windDirDay']
             sd = '{}%'.format(i['humidity'])
             zwx = i['uvIndex']
-            str += '|{date}|![]({day})|{temp}|![]({night})|{wind}|{sd}|{zwx}|\n'.format(date = date, day = day, temp = temp, night = night, wind = wind, sd = sd, zwx = zwx)
+            str += '| {date} |![]({day})| {temp} |![]({night})| {wind} | {sd} | {zwx} |\n'.format(date = date, day = day, temp = temp, night = night, wind = wind, sd = sd, zwx = zwx)
         return str
 
 
@@ -125,25 +120,22 @@ class Weather:
                 cache[i['icon']] = weather_icon
             weather = i['text']
             rain = i['pop']
-            str += '|{time}|![]({weather_icon})|{weather}|{temp}|{rain}|\n'.format(time = time, weather_icon = weather_icon, weather = weather, temp = temp, rain = rain)
+            str += '| {time} |![]({weather_icon})| {weather} | {temp}℃ | {rain}% |\n'.format(time = time, weather_icon = weather_icon, weather = weather, temp = temp, rain = rain)
         return str 
             
         
 
 
     def work(self):
-        # dayOfWeek = datetime.now().isoweekday()
-        str = self._print_daily_info(self.__get_hours_weather())
-        self.__post_to_serverChan("24h天气预报测试", str)
+        dayOfWeek = datetime.now().isoweekday()
 
-        # if dayOfWeek == 1:
-        #     #周一获取一周天气
-        #     data = self.__get_seven_days_weather()
-        #     result = self._print_seven_days_info(data)
-        #     print(result)
-        # else:
-        #     #平常24小时和3天内的天气
-        #     today = self.__get_live_weather()
-        #     threeday = self.__get_three_days_weather()
-        #     result = self._print_daily_info(today, threeday)
-        #     print(result)
+        if dayOfWeek == 1:
+            #周一获取一周天气
+            data = self.__get_seven_days_weather()
+            result = self._print_seven_days_info(data)
+            self.__post_to_serverChan('7天天气预报', result)
+        else:
+            #平常24小时
+            today = self.__get_hours_weather()
+            result = self._print_daily_info(today)
+            self.__post_to_serverChan('24小时天气预报', result)
