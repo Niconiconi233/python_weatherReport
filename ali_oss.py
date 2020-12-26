@@ -4,10 +4,10 @@ import os
 
 dir = os.environ
 
-accesskey = dir.get('OSSACCESSKEY')
-accesskeysecret = dir.get('OSSACCESSKEYSECRET')
-endpoint = dir.get('OSSENDPOINT')
-bucket = dir.get('OSSBUCKET')
+accesskey = 'LTAI4G1RjfFKSFFMKqXzQoVh'#dir.get('OSSACCESSKEY')
+accesskeysecret = 'FM4dF6kMzBrTFZ9gUJ0VJVFHUZA5Ab'#dir.get('OSSACCESSKEYSECRET')
+endpoint = 'oss-cn-chengdu.aliyuncs.com'#dir.get('OSSENDPOINT')
+bucket = 'weatherreqport'#dir.get('OSSBUCKET')
 
 
 
