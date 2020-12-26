@@ -1,4 +1,5 @@
 from weather import Weather 
+import os
 
 def main():
     weather = Weather()
@@ -6,4 +7,6 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    dir = os.environ
+    print(dir)
+    # main()
