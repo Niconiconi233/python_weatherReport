@@ -118,6 +118,7 @@ class Weather:
             else:
                 weather_icon = get_temp_url(self.__kind.format(i['icon']))
                 cache[i['icon']] = weather_icon
+            print(weather_icon)
             weather = i['text']
             rain = i['pop']
             str += '| {time} |![]({weather_icon})| {weather} | {temp}℃ | {rain}% |\n'.format(time = time, weather_icon = weather_icon, weather = weather, temp = temp, rain = rain)
