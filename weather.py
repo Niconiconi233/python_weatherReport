@@ -44,8 +44,10 @@ class Weather:
         post_body = {'text':title, 'desp':data}
         response = requests.post(self.__serverChan_url, data=post_body)
         response_json = json.loads(response.text)
-        if response_json.get('errno') != 0:
-            logger.error("发送数据到serverChan出错，错误信息：" + response_json.get('errmsg'))
+        errno = response_json.get("data").get("errno")
+
+        if errno != 0:
+            logger.error("发送数据到serverChan出错，错误信息：" + response_json.get('data').get("error"))
         else:
             logger.info('数据推送成功！')
 
