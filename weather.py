@@ -19,7 +19,7 @@ live_weather = "https://devapi.qweather.com/v7/weather/now?location={}&key={}&gz
 three_days_weather = "https://devapi.qweather.com/v7/weather/3d?location={}&key={}&gzip=y"
 seven_days_weather = "https://devapi.qweather.com/v7/weather/7d?location={}&key={}&gzip=y"
 twentyFour_hours_weather = "https://devapi.qweather.com/v7/weather/24h?location={}&key={}&gzip=y"
-serverChan_url = "https://sc.ftqq.com/{}.send"
+serverChan_url = "https://sctapi.ftqq.com//{}.send"
 
 
 
