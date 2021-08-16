@@ -18,5 +18,5 @@ bucket = oss2.Bucket(auth, endpoint, bucket)
 style = 'image/auto-orient,1/resize,p_50/quality,q_90'
 
 def get_temp_url(image):
-# 生成下载文件的签名URL，有效时间为60s。
-    return bucket.sign_url('GET', image, 60 * 5, params={'x-oss-process': style})     
+# 生成下载文件的签名URL，有效时间为1小时。
+    return bucket.sign_url('GET', image, 60 * 60, params={'x-oss-process': style})     
